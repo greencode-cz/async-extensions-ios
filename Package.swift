@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -21,14 +21,13 @@ let package = Package(
         .target(
             name: "AsyncExtensions",
             dependencies: [.product(name: "Collections", package: "swift-collections")],
-            path: "Sources"
-//            ,
-//            swiftSettings: [
-//              .unsafeFlags([
-//                "-Xfrontend", "-warn-concurrency",
-//                "-Xfrontend", "-enable-actor-data-race-checks",
-//              ])
-//            ]
+            path: "Sources",
+            swiftSettings: [
+              .unsafeFlags([
+                "-Xfrontend", "-enable-actor-data-race-checks",
+                "-Xfrontend", "-strict-concurrency=complete"
+              ])
+            ]
         ),
         .testTarget(
             name: "AsyncExtensionsTests",
