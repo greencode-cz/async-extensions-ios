@@ -14,7 +14,7 @@ public extension AsyncSequence {
 }
 
 /// Type erased version of an AsyncSequence.
-public struct AnyAsyncSequence<Element>: AsyncSequence {
+public struct AnyAsyncSequence<Element>: AsyncSequence, Sendable {
   public typealias AsyncIterator = AnyAsyncIterator<Element>
 
   private let makeAsyncIteratorClosure: @Sendable () -> AsyncIterator
